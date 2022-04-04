@@ -41,11 +41,11 @@ const item3 = new Item({
 
 
 app.get("/", function(req, res) {
-let items = Item.find({});
-console.log(items)
-
-
-  res.render("list", {listTitle: "Today", newListItems: items});
+  Item.find({}, (err,foundItems)=>{
+    console.log(foundItems)
+     res.render("list", {listTitle: "Today", newListItems: foundItems})
+  })
+ 
 
 });
 
